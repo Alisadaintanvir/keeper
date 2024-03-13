@@ -8,9 +8,11 @@ import axios from "axios";
 function App() {
   const [notes, setNotes] = useState([]);
 
+  const serverUrl = "https://keeper-black.vercel.app";
+
   function addNote(newNote) {
     axios
-      .post("http://localhost:5000/api/add-note", { newNote })
+      .post(`${serverUrl}/api/add-note`, { newNote })
       .then((res) => {
         console.log("Note has been sent successfully!", res.data);
         fetchNotes();
@@ -20,7 +22,7 @@ function App() {
 
   function deleteNote(id) {
     axios
-      .delete(`http://localhost:5000/api/note/${id}`)
+      .delete(`${serverUrl}/api/note/${id}`)
       .then((res) => {
         console.log(res.data);
         fetchNotes();
@@ -32,7 +34,7 @@ function App() {
 
   function fetchNotes() {
     axios
-      .get("http://localhost:5000/api/all-notes")
+      .get(`${serverUrl}/api/all-notes`)
       .then((res) => {
         setNotes(res.data);
       })

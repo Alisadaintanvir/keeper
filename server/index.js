@@ -40,7 +40,7 @@ const note = mongoose.model("Note", noteSchema);
 
 // Define route
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Server is running successfully!");
 });
 
 app.get("/api/all-notes", (req, res) => {
